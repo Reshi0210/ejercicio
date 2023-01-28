@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import rafael.ejercicio.DTOs.ProductDto;
 import rafael.ejercicio.Models.Product;
 import rafael.ejercicio.Services.ProductService;
 
@@ -19,18 +20,18 @@ public class ProductController {
     ProductService productService;
 
     @GetMapping("getAll")
-    public List<Product> getAll(){
+    public List<ProductDto> getAll(){
         return productService.getAll();
     }
 
     @PostMapping("create")
-    public ResponseEntity<Product> create(@RequestBody Product product){
-        productService.create(product);
-        return new ResponseEntity(product, HttpStatus.OK);
+    public ResponseEntity<ProductDto> create(@RequestBody ProductDto p){
+        productService.create(p);
+        return new ResponseEntity(p, HttpStatus.OK);
     }
 
     @PutMapping("update/{idOldProduct}")
-    public ResponseEntity<Product> update(@PathVariable Long idOldProduct,@RequestBody Product product){
+    public ResponseEntity<Product> update(@PathVariable Long idOldProduct,@RequestBody ProductDto product){
         productService.update(idOldProduct, product);
         return new ResponseEntity(product, HttpStatus.OK);
     }
