@@ -1,5 +1,8 @@
 package rafael.ejercicio.Models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -19,9 +22,11 @@ public class Sale {
 
         private LocalDate date;
 
-        @ManyToOne(fetch =FetchType.LAZY)
+        @JsonManagedReference
+        @ManyToOne()
         @JoinColumn(name="id_client")
         private Client client;
+
 
         @OneToMany(mappedBy ="sale",cascade = CascadeType.ALL)
         private Set<SaleDetail> saleDetail;

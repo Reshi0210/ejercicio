@@ -1,11 +1,9 @@
 package rafael.ejercicio.Controllers;
-
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import rafael.ejercicio.DTOs.ProductDto;
-import rafael.ejercicio.Models.Product;
 import rafael.ejercicio.Services.ProductService;
 
 
@@ -31,7 +29,7 @@ public class ProductController {
     }
 
     @PutMapping("update/{idOldProduct}")
-    public ResponseEntity<Product> update(@PathVariable Long idOldProduct,@RequestBody ProductDto product){
+    public ResponseEntity<ProductDto> update(@PathVariable Long idOldProduct,@RequestBody ProductDto product){
         productService.update(idOldProduct, product);
         return new ResponseEntity(product, HttpStatus.OK);
     }
@@ -43,8 +41,10 @@ public class ProductController {
     }
 
     @GetMapping("findById/{id}")
-    public ResponseEntity<Product> findById(@PathVariable Long id){
+    public ResponseEntity<ProductDto> findById(@PathVariable Long id){
         return new ResponseEntity(productService.findById(id),HttpStatus.OK);
     }
+
+
 
 }

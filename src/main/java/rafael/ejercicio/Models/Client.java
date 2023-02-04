@@ -1,5 +1,6 @@
 package rafael.ejercicio.Models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -27,6 +28,7 @@ public class Client {
 
     private String email;
 
+    @JsonBackReference
     @OneToMany(mappedBy ="client",cascade = CascadeType.ALL)
     private Set<Sale> sales;
 

@@ -11,5 +11,5 @@ public class ProductDto {
     private long idProduct;
     private String name;
     private Double price;
-    private Set<SaleDetail> SaleDetails;
+    // private Set<SaleDetail> SaleDetails;
 }
